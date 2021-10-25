@@ -13,5 +13,9 @@
     - [alacritty](https://github.com/alacritty/alacritty)
     - [kitty](https://github.com/kovidgoyal/kitty)
         - [snazzy](https://github.com/connorholyday/kitty-snazzy)
-    - [fastfetch](https://github.com/LinusDierheimer/fastfetch)
+    - [rsfetch](https://github.com/rsfetch/rsfetch)
     - [cmus](https://github.com/cmus/cmus)
+
+#### Nautilus Extensions
+[Alacritty-Nautilus](https://github.com/Dragnansia/Alacritty-Nautilus)  
+[Kitty-Nautilus](https://github.com/Dragnansia/Kitty-Nautilus)
