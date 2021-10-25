@@ -112,6 +112,7 @@ source $ZSH/oh-my-zsh.sh
 
 alias la="k -A"
 alias ll="k"
+alias rsfetch="rsfetch -PdhHklrstuU@wN"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
