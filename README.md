@@ -10,5 +10,8 @@
 
 #### Software
 - Terminal
+    - [alacritty](https://github.com/alacritty/alacritty)
+    - [kitty](https://github.com/kovidgoyal/kitty)
+        - [snazzy](https://github.com/connorholyday/kitty-snazzy)
     - [fastfetch](https://github.com/LinusDierheimer/fastfetch)
     - [cmus](https://github.com/cmus/cmus)
