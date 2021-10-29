@@ -1,0 +1,9 @@
+{
+    "languageserver": {
+        "rust-analyzer": {
+            "filetypes": ["rs"]
+        }
+    },
+    "rust-analyzer.server.path": "~/.cargo/bin/rust-analyzer",
+    "rust-analyzer.updates.channel": "nightly"
+}
