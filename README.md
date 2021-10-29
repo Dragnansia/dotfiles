@@ -15,6 +15,7 @@
         - [snazzy](https://github.com/connorholyday/kitty-snazzy)
     - [rsfetch](https://github.com/rsfetch/rsfetch)
     - [cmus](https://github.com/cmus/cmus)
+    - [neovim](https://neovim.io/)
 
 #### Nautilus Extensions
 [Alacritty-Nautilus](https://github.com/Dragnansia/Alacritty-Nautilus)  
