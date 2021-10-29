@@ -1,139 +1,97 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'hoob3rt/lualine.nvim'
-Plug 'voldikss/vim-floaterm'
-Plug 'nvim-lua/completion-nvim'
-Plug 'neovim/nvim-lspconfig'
-Plug 'f-person/git-blame.nvim'
-Plug 'b3nj5m1n/kommentary'
-Plug 'lambdalisue/fern.vim'
-Plug 'yuki-yano/fern-preview.vim'
-Plug 'lambdalisue/fern-git-status.vim'
-Plug 'lambdalisue/nerdfont.vim'
-Plug 'mhartington/formatter.nvim'
-Plug 'glepnir/dashboard-nvim'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/nvim-cmp'
-Plug 'windwp/nvim-autopairs'
-Plug 'JesseKPhillips/d.vim'
-Plug 'williamboman/nvim-lsp-installer'
-Plug 'hrsh7th/cmp-vsnip'
-Plug 'hrsh7th/vim-vsnip'
+" Coc completion with rust
+Plug 'rust-lang/rust.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Icons
 Plug 'kyazdani42/nvim-web-devicons'
-Plug 'folke/trouble.nvim'
-Plug 'projekt0n/github-nvim-theme'
+
+" Git
+Plug 'tveskag/nvim-blame-line'
+
+" Cursor
+Plug 'yamatsum/nvim-cursorline'
+
+" Colorsheme
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'morhetz/gruvbox'
+
+" Startup
+Plug 'mhinz/vim-startify'
+
+" Auto pair
+Plug 'steelsojka/pears.nvim'
 
 call plug#end()
 
-colorscheme github_dimmed
-
-set number relativenumber
-
+"""""" Configuration
+" Basic settings
 :set tabstop=4
 :set shiftwidth=4
 :set expandtab
+:set encoding=utf-8
 
+:set number relativenumber
+
+" Colorsheme
+let g:tokyonight_style = "storm"
+let g:gruvbox_italic = 1
+
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+if (empty($TMUX))
+  if (has("nvim"))
+    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  if (has("termguicolors"))
+    set termguicolors
+  endif
+endif
+
+colorscheme gruvbox
+
+" Rust format on save buffer
+let g:rustfmt_autosave = 1
+
+" Nvim Blame Line
+autocmd BufEnter * EnableBlameLine
+
+" Coc.nvim
+set updatetime=300
+
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" GoTo code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Lua
 lua << EOF
-require("github-theme").setup{}
-require("trouble").setup{}
-require('lualine').setup{}
-
-local cmp = require'cmp'
-cmp.setup({
-    snippet = {
-      expand = function(args)
-        vim.fn["vsnip#anonymous"](args.body)
-      end,
-    },
-    mapping = {
-      ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-      ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.close(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    },
-    sources = {
-      { name = 'nvim_lsp' },
-      { name = 'vsnip' },
-      { name = 'buffer' },
-    }
-})
-
-local lsp_installer = require("nvim-lsp-installer")
-local nvim_lsp = require('lspconfig')
-
-local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
-  local opts = { noremap=true, silent=true }
-  buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
-  buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-
-end
-lsp_installer.on_server_ready(function(server)
-    local opts = {
-	    capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-        on_attach = on_attach
-    }
-
-    server:setup(opts)
-    vim.cmd [[ do User LspAttachBuffers ]]
-end)
-
-require('nvim-autopairs').setup{}
-
-require("nvim-autopairs.completion.cmp").setup({
-  map_cr = true, --  map <CR> on insert mode
-  map_complete = true, -- it will auto insert `(` (map_char) after select function or method item
-  auto_select = true, -- automatically select the first item
-  insert = false, -- use insert confirm behavior instead of replace
-  map_char = { -- modifies the function or method delimiter by filetypes
-    all = '(',
-    tex = '{',
-    ll = '<',
-  }
-})
-
-require('formatter').setup{
-    filetype = {
-        rust = {
-            function()
-                return {
-                    exe = "rustfmt",
-                    args = {"--emit=stdout"},
-                    stdin = true
-                }
-            end
-        }
-    }
-}
-
+    require'pears'.setup()
 EOF
-
-let g:gitblame_enabled = 1
-
-noremap <C-f> :Fern . -drawer -reveal=% -toggle -width=35<Esc>
-
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost *.js,*.rs,*.lua,*.c,*.h,*.cpp,*.hpp FormatWrite
-augroup END
