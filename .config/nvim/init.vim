@@ -10,6 +10,11 @@ Plug 'kyazdani42/nvim-web-devicons'
 
 " Git
 Plug 'tveskag/nvim-blame-line'
+if has('nvim') || has('patch-8.0.902')
+  Plug 'mhinz/vim-signify'
+else
+  Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
 
 " Cursor
 Plug 'yamatsum/nvim-cursorline'
@@ -57,6 +62,10 @@ endif
 
 colorscheme gruvbox
 
+" Neovide
+let g:neovide_cursor_vfx_mode = "railgun"
+set guifont=Gintronic:16
+
 " Rust format on save buffer
 let g:rustfmt_autosave = 1
 
@@ -64,7 +73,7 @@ let g:rustfmt_autosave = 1
 autocmd BufEnter * EnableBlameLine
 
 " Coc.nvim
-set updatetime=300
+set updatetime=100
 
 if has('nvim')
   inoremap <silent><expr> <c-space> coc#refresh()
