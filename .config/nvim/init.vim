@@ -5,6 +5,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
 " Icons
 Plug 'kyazdani42/nvim-web-devicons'
 
@@ -99,6 +102,9 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+" Markdown
+let g:mkdp_auto_start = 1
 
 " Lua
 lua << EOF
