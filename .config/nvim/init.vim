@@ -5,6 +5,9 @@ Plug 'rust-lang/rust.vim'
 Plug 'vim-syntastic/syntastic'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Omnisharp config
+Plug 'omnisharp/omnisharp-vim'
+
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
@@ -75,6 +78,9 @@ let g:rustfmt_autosave = 1
 " Nvim Blame Line
 autocmd BufEnter * EnableBlameLine
 
+" Run command format Omnisharp on c# saved
+autocmd BufWritePost *.cs OmniSharpCodeFormat
+
 " Coc.nvim
 set updatetime=100
 
@@ -106,7 +112,16 @@ endfunction
 " Markdown
 let g:mkdp_auto_start = 1
 
+" Lsp Config and Completion
+set completeopt=menuone,noselect
+
+" Omnisharp
+let g:OmniSharp_server_use_mono = 1
+let g:syntastic_cs_checkers = ['code_checker']
+
+
 " Lua
 lua << EOF
     require'pears'.setup()
 EOF
+
