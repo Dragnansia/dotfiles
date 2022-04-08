@@ -1,9 +1,0 @@
-window:
-  dimensions:
-    columns: 120
-    lines: 34
-
-font:
-  normal:
-    family: Gintronic
-  size: 12
