@@ -10,4 +10,5 @@
 - [kitty](https://github.com/kovidgoyal/kitty)
 - [helix](https://github.com/helix-editor/helix)
 - [neovim](https://neovim.io/)
-
+- [bottom](https://github.com/ClementTsang/bottom)
+- [freshfetch](https://github.com/K4rakara/freshfetch)
