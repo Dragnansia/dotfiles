@@ -1,11 +1,16 @@
 # Nushell Config File
+#
+# Book:
+# https://www.nushell.sh/book/
+#
+# Github:
+# https://github.com/nushell/nushell
+#
 
-alias la = ls -a
-alias ll = ls
 
-let-env PATH = ($env.PATH | prepend $"($env.HOME)/bin")
-let-env GPG_TTY = (tty)
-
+#############################################
+#	Default Nushell Config
+#############################################
 def create_left_prompt [] {
     let path_segment = ($env.PWD)
 
@@ -264,4 +269,26 @@ let $config = {
     }
   ]
 }
+
+
+#############################################
+#		Alias
+#############################################
+alias la = ls -a
+alias ll = ls
+
+
+#############################################
+#		Environment Variable
+#############################################
+let-env PATH = ($env.PATH | prepend $"($env.HOME)/bin")
+let-env GPG_TTY = (tty)
+
+
+#############################################
+#		Custom Functions
+#############################################
+#
+# https://www.nushell.sh/book/custom_commands.html
+#
 
