@@ -79,6 +79,17 @@ module completions {
     ^git remote | lines | each { |line| $line | str trim }
   }
 
+  export extern "git diff" [
+    --output=<file>			       # Output to a specific file instead of stdout
+    --name-only				       # Show only names of changed files
+    --no-color				       # Turn off colored diff
+  ]
+
+  export extern "git commit" [
+    --message(-m): string		       # Validation message
+    --quiet(-q)                                # Suppress progress reporting
+  ]
+
   export extern "git checkout" [
     branch?: string@"nu-complete git branches" # name of the branch to checkout
     -b: string                                 # create and checkout a new branch
