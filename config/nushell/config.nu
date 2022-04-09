@@ -80,14 +80,18 @@ module completions {
   }
 
   export extern "git diff" [
-    --output=<file>			       # Output to a specific file instead of stdout
-    --name-only				       # Show only names of changed files
-    --no-color				       # Turn off colored diff
+    --output=<file>                            # Output to a specific file instead of stdout
+    --name-only                                # Show only names of changed files
+    --no-color                                 # Turn off colored diff
   ]
 
   export extern "git commit" [
-    --message(-m): string		       # Validation message
+    --message(-m): string                      # Validation message
     --quiet(-q)                                # Suppress progress reporting
+  ]
+
+  export extern "git status" [
+    --verbose(-v)                              # Verbose mode
   ]
 
   export extern "git checkout" [
