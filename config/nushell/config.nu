@@ -7,22 +7,32 @@
 # https://github.com/nushell/nushell
 #
 
+#############################################
+# Import Module
+#############################################
+use ~/.config/nushell/function.nu
 
 #############################################
-#	Default Nushell Config
+# Custom script
+#############################################
+source ~/.config/nushell/env_variable.nu
+source ~/.config/nushell/alias.nu
+
+#############################################
+# Default Nushell Config
 #############################################
 def create_left_prompt [] {
     let path_segment = ($env.PWD)
 
-    $path_segment
+    $path_segment | path basename
 }
 
 def create_right_prompt [] {
-    let time_segment = ([
-        (date now | date format '%m/%d/%Y %r')
-    ] | str collect)
+    # let time_segment = ([
+    #     (date now | date format '%m/%d/%Y %r')
+    # ] | str collect)
 
-    $time_segment
+    # $time_segment
 }
 
 # Use nushell functions to define your right and left prompt
@@ -284,26 +294,3 @@ let $config = {
     }
   ]
 }
-
-
-#############################################
-#		Alias
-#############################################
-alias la = ls -a
-alias ll = ls
-
-
-#############################################
-#		Environment Variable
-#############################################
-let-env PATH = ($env.PATH | prepend $"($env.HOME)/bin")
-let-env GPG_TTY = (tty)
-
-
-#############################################
-#		Custom Functions
-#############################################
-#
-# https://www.nushell.sh/book/custom_commands.html
-#
-
