@@ -2,17 +2,22 @@
 # Environment Variable
 #############################################
 def create_left_prompt [] {
-    let path_segment = ($env.PWD)
+    let path_segment = ($env.PWD | split row "/")
 
-    $path_segment
+    if ($path_segment | empty?) {
+        "/"
+    } else {
+        let length = ($path_segment | length)
+        $path_segment | get ($length - 1)
+    }
 }
 
 def create_right_prompt [] {
-    let time_segment = ([
-        (date now | date format '%m/%d/%Y %r')
-    ] | str collect)
-
-    $time_segment
+    if ($"($env.PWD)/.git" | path exists) {
+        (git branch --show-current)
+    } else {
+        ""
+    }
 }
 
 # Use nushell functions to define your right and left prompt
