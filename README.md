@@ -8,8 +8,9 @@
 
 ### Software
 - [kitty](https://github.com/kovidgoyal/kitty)
+- [alacritty](https://github.com/alacritty/alacritty)
 - [helix](https://github.com/helix-editor/helix)
 - [neovim](https://neovim.io/)
 - [bottom](https://github.com/ClementTsang/bottom)
 - [freshfetch](https://github.com/K4rakara/freshfetch)
-- [Replay Sorcery](https://github.com/matanui159/ReplaySorcery)
+- [replay sorcery](https://github.com/matanui159/ReplaySorcery)
