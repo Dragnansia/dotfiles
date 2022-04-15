@@ -13,6 +13,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'xiyaowong/nvim-transparent'
     Plug 'mhartington/formatter.nvim'
+    Plug 'voldikss/vim-floaterm'
 
     Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 call plug#end()
