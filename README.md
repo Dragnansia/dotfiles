@@ -14,3 +14,4 @@
 - [bottom](https://github.com/ClementTsang/bottom)
 - [freshfetch](https://github.com/K4rakara/freshfetch)
 - [replay sorcery](https://github.com/matanui159/ReplaySorcery)
+- [neovide](https://github.com/neovide/neovide)
