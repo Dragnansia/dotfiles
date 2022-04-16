@@ -24,3 +24,8 @@ tnoremap <silent> <F11> <c-\><c-n> :FloatermKill<CR>
 nnoremap <silent> <C-f> :Telescope find_files<CR>
 nnoremap <silent> <C-b> :Telescope buffers<CR>
 nnoremap <silent> <C-r> :Telescope lsp_references<CR>
+
+" Cmp nvim
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
+

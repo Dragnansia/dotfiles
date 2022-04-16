@@ -23,6 +23,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-lua/popup.nvim'
     Plug 'nvim-telescope/telescope-media-files.nvim'
     Plug 'pwntester/octo.nvim'
+    Plug 'lewis6991/hover.nvim'
+    Plug 'saecki/crates.nvim'
 
     Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 call plug#end()
