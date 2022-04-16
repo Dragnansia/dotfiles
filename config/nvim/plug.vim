@@ -14,6 +14,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'xiyaowong/nvim-transparent'
     Plug 'mhartington/formatter.nvim'
     Plug 'voldikss/vim-floaterm'
+    Plug 'hrsh7th/cmp-vsnip'
+    Plug 'hrsh7th/vim-vsnip'
 
     Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 call plug#end()
