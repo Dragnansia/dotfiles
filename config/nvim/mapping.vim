@@ -19,3 +19,8 @@ tnoremap <silent> <F9> <c-\><c-n> :FloatermNext<CR>
 tnoremap <silent> <F12> <c-\><c-n> :FloatermToggle<CR>
 tnoremap <silent> <Esc> <c-\><c-n> :FloatermToggle<CR>
 tnoremap <silent> <F11> <c-\><c-n> :FloatermKill<CR>
+
+" Telescope
+nnoremap <silent> <C-f> :Telescope find_files<CR>
+nnoremap <silent> <C-b> :Telescope buffers<CR>
+nnoremap <silent> <C-r> :Telescope lsp_references<CR>

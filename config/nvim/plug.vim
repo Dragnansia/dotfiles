@@ -16,6 +16,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'voldikss/vim-floaterm'
     Plug 'hrsh7th/cmp-vsnip'
     Plug 'hrsh7th/vim-vsnip'
+    Plug 'ray-x/lsp_signature.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+    Plug 'BurntSushi/ripgrep'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-lua/popup.nvim'
+    Plug 'nvim-telescope/telescope-media-files.nvim'
+    Plug 'pwntester/octo.nvim'
 
     Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 call plug#end()
