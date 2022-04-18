@@ -29,3 +29,6 @@ nnoremap <silent> <C-r> :Telescope lsp_references<CR>
 nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> ga <cmd>lua vim.lsp.buf.code_action()<CR>
 
+" Markdown preview
+nnoremap <C-p> :MarkdownPreview<CR>
+

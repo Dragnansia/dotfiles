@@ -25,6 +25,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'pwntester/octo.nvim'
     Plug 'lewis6991/hover.nvim'
     Plug 'saecki/crates.nvim'
+    Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
 
     Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 call plug#end()
