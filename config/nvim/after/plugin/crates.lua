@@ -56,7 +56,7 @@ require('crates').setup {
             hide = { "q", "<esc>" },
             select = { "<cr>" },
             select_alt = { "s" },
-            copy_version = { "yy" },
+            copy_value = { "yy" },
             toggle_feature = { "<cr>" },
             goto_item = { "gd", "K" },
             jump_forward = { "<c-i>" },
