@@ -9,3 +9,5 @@ source ~/.config/nvim/theme.vim
 source ~/.config/nvim/mapping.vim
 
 autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })
+
+autocmd BufWritePost *.rs FormatWrite
