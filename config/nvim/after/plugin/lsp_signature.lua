@@ -1,3 +1,4 @@
 local cfg = {}
+local lsp_signature = require("lsp_signature")
 
-require("lsp_signature").setup(cfg)
+lsp_signature.setup(cfg)

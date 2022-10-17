@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
     Plug 'neovim/nvim-lspconfig'
-    Plug 'williamboman/nvim-lsp-installer'
+    " Plug 'williamboman/nvim-lsp-installer'
     Plug 'jiangmiao/auto-pairs'
     Plug 'hrsh7th/cmp-nvim-lsp'
     Plug 'hrsh7th/cmp-buffer'
@@ -27,6 +27,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'saecki/crates.nvim'
     Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
     Plug 'arkav/lualine-lsp-progress'
+    Plug 'simrat39/rust-tools.nvim'
+    Plug 'williamboman/mason.nvim'
+    Plug 'williamboman/mason-lspconfig.nvim'
+
+    " Debug
+    Plug 'mfussenegger/nvim-dap'
+    Plug 'rcarriga/nvim-dap-ui'
 
     Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
 call plug#end()
