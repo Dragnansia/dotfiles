@@ -33,6 +33,7 @@ call plug#begin('~/.vim/plugged')
 
     " Debug
     Plug 'mfussenegger/nvim-dap'
+    Plug 'theHamsta/nvim-dap-virtual-text'
     Plug 'rcarriga/nvim-dap-ui'
 
     Plug 'luisiacc/gruvbox-baby', {'branch': 'main'}
