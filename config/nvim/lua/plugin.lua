@@ -1,6 +1,7 @@
 local Plug = vim.fn["plug#"]
 
 vim.call("plug#begin", "~/.vim/plugged")
+
 Plug("neovim/nvim-lspconfig")
 -- Plug 'williamboman/nvim-lsp-installer'
 Plug("jiangmiao/auto-pairs")
@@ -38,5 +39,9 @@ Plug("mfussenegger/nvim-dap")
 Plug("theHamsta/nvim-dap-virtual-text")
 Plug("rcarriga/nvim-dap-ui")
 
+-- Colorshemes
 Plug("luisiacc/gruvbox-baby", { ["branch"] = "main" })
+Plug("arcticicestudio/nord-vim")
+Plug("EdenEast/nightfox.nvim")
+
 vim.call("plug#end")

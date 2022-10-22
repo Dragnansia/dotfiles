@@ -1,3 +1,3 @@
 vim.o.background = "dark"
 
-vim.cmd("colorscheme gruvbox-baby")
+vim.cmd("colorscheme carbonfox")
