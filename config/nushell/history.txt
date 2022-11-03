@@ -1,0 +1,16 @@
+clear
+nvim Projets/dotfiles/config/nushell/config.nu
+clear
+clear
+ls
+clear
+cd Projets/dotfiles/
+clear
+git status
+clear
+git add .
+git status
+nvim .gitignore
+git status
+nvim .gitignore
+clear

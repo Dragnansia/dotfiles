@@ -1,23 +1,21 @@
-#############################################
-# Environment Variable
-#############################################
-def create_left_prompt [] {
-    let path_segment = ($env.PWD | split row "/")
+# Nushell Environment Config File
 
-    if ($path_segment | empty?) {
-        "/"
+def create_left_prompt [] {
+    let path_segment = if (is-admin) {
+        $"(ansi red_bold)($env.PWD)"
     } else {
-        let length = ($path_segment | length)
-        $path_segment | get ($length - 1)
+        $"(ansi green_bold)($env.PWD)"
     }
+
+    $path_segment
 }
 
 def create_right_prompt [] {
-    if ($"($env.PWD)/.git" | path exists) {
-        (git branch --show-current)
-    } else {
-        ""
-    }
+    let time_segment = ([
+        (date now | date format '%m/%d/%Y %r')
+    ] | str join)
+
+    $time_segment
 }
 
 # Use nushell functions to define your right and left prompt
@@ -37,12 +35,12 @@ let-env PROMPT_MULTILINE_INDICATOR = { "::: " }
 # Note: The conversions happen *after* config.nu is loaded
 let-env ENV_CONVERSIONS = {
   "PATH": {
-    from_string: { |s| $s | split row (char esep) }
-    to_string: { |v| $v | str collect (char esep) }
+    from_string: { |s| $s | split row (char esep) | path expand -n }
+    to_string: { |v| $v | path expand -n | str join (char esep) }
   }
   "Path": {
-    from_string: { |s| $s | split row (char esep) }
-    to_string: { |v| $v | str collect (char esep) }
+    from_string: { |s| $s | split row (char esep) | path expand -n }
+    to_string: { |v| $v | path expand -n | str join (char esep) }
   }
 }
 
@@ -61,10 +59,4 @@ let-env NU_PLUGIN_DIRS = [
 ]
 
 # To add entries to PATH (on Windows you might use Path), you can use the following pattern:
-# let-env PATH = ($env.PATH | prepend '/some/path')
-
-# Add ~/bin on path
-let-env PATH = ($env.PATH | prepend $"($env.HOME)/bin")
-
-# Initialisation of GPT to sign github commit
-let-env GPG_TTY = (tty)
+# let-env PATH = ($env.PATH | split row (char esep) | prepend '/some/path')
