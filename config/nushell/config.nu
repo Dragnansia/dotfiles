@@ -122,6 +122,9 @@ module completions {
     --verbose(-v)                                   # be more verbose
     --help                                          # Display this help message
   ]
+
+  # Current folder status
+  export extern "git status" []
 }
 
 # Get just the extern definitions without the custom completion commands
