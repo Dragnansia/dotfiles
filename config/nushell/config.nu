@@ -1,5 +1,8 @@
 # Nushell Config File
 
+# Completions section
+use ~/.config/nushell/completions/cargo.nu *
+
 module completions {
   # Custom completions for external commands (those outside of Nushell)
   # Each completions has two parts: the form of the external command, including its flags and parameters
@@ -125,6 +128,15 @@ module completions {
 
   # Current folder status
   export extern "git status" []
+
+  # Record change to the repository
+  export extern "git commit" [
+    --all(-a)                                       # Tell the command to automatically stage files that have be modified and delete
+    --patch(-p)                                     # Use the interactive path selection interface to choose which changes to commits
+    --reuse-message(-C)                             # Take information from existing commit
+    --reedit-message(-c)                            # Same as -C but commit message can be edit
+    --message(-m): string                           # Use the given <msg> as the commit message
+  ]
 }
 
 # Get just the extern definitions without the custom completion commands
@@ -513,3 +525,5 @@ let-env config = {
     }
   ]
 }
+
+source ~/.cache/starship/init.nu

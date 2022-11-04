@@ -33,6 +33,8 @@ Plug("arkav/lualine-lsp-progress")
 Plug("simrat39/rust-tools.nvim")
 Plug("williamboman/mason.nvim")
 Plug("williamboman/mason-lspconfig.nvim")
+Plug("LhKipp/nvim-nu", { ["do"] = ":TSInstall nu" })
+Plug("jose-elias-alvarez/null-ls.nvim")
 
 -- Debug
 Plug("mfussenegger/nvim-dap")
