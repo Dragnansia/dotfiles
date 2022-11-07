@@ -5,6 +5,7 @@ vim.api.nvim_set_option("updatetime", 200)
 
 require("plugin")
 require("theme")
+require("mapping")
 
 -- Format
 local format_group = vim.api.nvim_create_augroup("FormatAutoGroup", {})

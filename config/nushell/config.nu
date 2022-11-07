@@ -129,6 +129,14 @@ module completions {
   # Current folder status
   export extern "git status" []
 
+  # Add changes
+  export extern "git add" [
+    ...target: string
+  ]
+
+  # Display diff
+  export extern "git diff" []
+
   # Record change to the repository
   export extern "git commit" [
     --all(-a)                                       # Tell the command to automatically stage files that have be modified and delete

@@ -22,7 +22,7 @@ vim.keymap.set("i", "<c-r> <c-v>", "")
 -- Telescope
 vim.keymap.set("n", "<C-f>", ":Telescope find_files<CR>")
 vim.keymap.set("n", "<C-b>", ":Telescope buffers<CR>")
-vim.keymap.set("n", "<C-r>", ":Telescope lsp_references<CR>")
+vim.keymap.set("n", "<C-^>", ":Telescope lsp_references<CR>")
 
 -- Cmp nvim
 vim.keymap.set("n", "K", ":lua vim.lsp.buf.hover()<CR>")
