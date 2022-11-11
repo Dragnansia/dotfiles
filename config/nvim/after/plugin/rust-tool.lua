@@ -1,3 +1,3 @@
-local rust_tool = require("rust-tools")
+-- local rust_tool = require("rust-tools")
 
-rust_tool.setup()
+-- rust_tool.setup()

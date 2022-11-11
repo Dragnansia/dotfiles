@@ -20,13 +20,15 @@ vim.keymap.set("i", "<c-r> <c-v>", "")
 --vim.keymap.set("n", "<F11> <c-\\><c-n>", ":FloatermKill<CR>")
 
 -- Telescope
-vim.keymap.set("n", "<C-f>", ":Telescope find_files<CR>")
-vim.keymap.set("n", "<C-b>", ":Telescope buffers<CR>")
-vim.keymap.set("n", "<C-^>", ":Telescope lsp_references<CR>")
+vim.keymap.set("n", "<C-t>f", ":Telescope find_files<CR>")
+vim.keymap.set("n", "<C-t>b", ":Telescope buffers<CR>")
+vim.keymap.set("n", "<C-t>r", ":Telescope lsp_references<CR>")
 
 -- Cmp nvim
 vim.keymap.set("n", "K", ":lua vim.lsp.buf.hover()<CR>")
 vim.keymap.set("n", "ga", ":lua vim.lsp.buf.code_action()<CR>")
+vim.keymap.set("n", "gi", ":lua vim.lsp.buf.implementation()<CR>")
+vim.keymap.set("n", "gd", ":lua vim.lsp.buf.definition()<CR>")
 
 -- Debugging
 vim.keymap.set("n", "<S-b>", ":lua require('dap').toggle_breakpoint()<CR>")
