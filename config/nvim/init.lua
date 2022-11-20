@@ -2,6 +2,7 @@ vim.bo.shiftwidth = 4
 vim.wo.relativenumber = true
 vim.bo.expandtab = 4
 vim.api.nvim_set_option("updatetime", 200)
+vim.g.mapleader = ","
 
 require("plugin")
 require("theme")
